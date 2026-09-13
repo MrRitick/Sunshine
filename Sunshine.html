@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine Academy School - Future Ready Education</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for Smart Theme Management */
+        :root {
+            --primary: #0f172a;
+            --secondary: #2563eb;
+            --accent: #f59e0b;
+            --light-bg: #f8fafc;
+            --text-color: #334155;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Top Header */
+        .top-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .top-info span {
+            margin-right: 20px;
+        }
+
+        .top-info i {
+            color: var(--accent);
+            margin-right: 6px;
+        }
+
+        /* Smart Sticky Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 28px;
+            margin-right: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            color: var(--text-color);
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary);
+        }
+
+        .cta-btn {
+            background: var(--secondary);
+            color: var(--white) !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .cta-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Smart Hero Section with Modern Overlay */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(37, 99, 235, 0.75)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content max-width {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 12px 28px;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: #d97706;
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Features Cards Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: -60px auto 0;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Section Titles Style */
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header h2 {
+            font-size: 35px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #64748b;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 8%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: #64748b;
+        }
+
+        /* Programs/Academics Grid */
+        .programs {
+            padding: 80px 8%;
+            background: #f1f5f9;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .program-info {
+            padding: 25px;
+        }
+
+        .program-info h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Notice Board */
+        .notices {
+            padding: 80px 8%;
+        }
+
+        .notice-box {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.2);
+        }
+
+        .notice-box h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            font-size: 26px;
+        }
+
+        .notice-box h2 i {
+            color: var(--accent);
+        }
+
+        .notice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .notice-item span {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 8%;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-details h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-info-item i {
+            font-size: 20px;
+            color: var(--secondary);
+            background: #eff6ff;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 8%;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .about-section, .contact-section {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .top-header {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-header">
+        <div class="top-info">
+            <span><i class="fas fa-phone-alt"></i> +91 08274 942697</span>
+            <span><i class="fas fa-envelope"></i> info@sunshineacademy.edu</span>
+        </div>
+        <div class="top-info">
+            <span><i class="fas fa-clock"></i> Mon - Fri : 11:30 AM - 4:00 PM</span>
+        </div>
+    </div>
+
+    <!-- Smart Header / Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-sun"></i> Sunshine Academy
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#notices">Notices</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="cta-btn">Admission Open</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Smart Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shape Your Child's Future with Excellence</h1>
+            <p>Providing holistic education, smart classrooms, moral values, and world-class sports facilities at Sunshine Academy.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn-primary">Apply For Admission</a>
+                <a href="#about" class="btn-outline">Explore More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Feature Cards -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <i class="fas fa-award"></i>
+            <h3>Top Academic Rank</h3>
+            <p>Consistently achieving brilliant board and school results year after year.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-chalkboard-user"></i>
+            <h3>Expert Faculty</h3>
+            <p>Highly qualified and dedicated teachers providing individual attention.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-halved"></i>
+            <h3>Safe & Secure</h3>
+            <p>CCTV monitored campus with secure transport facilities for students.</p>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" alt="School Campus">
+        </div>
+        <div class="about-content">
+            <h2>Welcome to Sunshine Academy</h2>
+            <p>At Sunshine Academy, we believe in unlocking the unique potential of every student. Our curriculum is carefully designed to foster critical thinking, creativity, and leadership skills alongside traditional academics.</p>
+            <p>We feature modern science and computer laboratories, a spacious library, and playgrounds designed for physical fitness and character development.</p>
+            <a href="#contact" class="btn-primary" style="display: inline-block; margin-top: 10px;">Learn More About Us</a>
+        </div>
+    </section>
+
+    <!-- Programs / Classes -->
+    <section class="programs" id="programs">
+        <div class="section-header">
+            <h2>Our Academic Programs</h2>
+            <p>Structured levels of learning designed to adapt to your child’s growth stage.</p>
+        </div>
+        <div class="program-grid">
+            <div class="program-card">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="Primary Wing">
+                <div class="program-info">
+                    <h3>Primary Wing (Class I - V)</h3>
+                    <p>Foundation building through interactive learning, fun activities, and essential social development.</p>
+                </div>
+            </div>
+            <div class="program-card">
+                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80" alt="Middle Wing">
+                <div class="program-info">
+                    <h3>Middle Wing (Class VI - VIII)</h3>
+                    <p>Encouraging analytical thinking, scientific temperament, and multi-disciplinary subject mastery.</p>
+                </div>
+            </div>
+            <div class="program-card">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" alt="Senior Secondary">
+                <div class="program-info">
+                    <h3>Senior Secondary (Class IX - XII)</h3>
+                    <p>Rigorous career coaching, competitive exam foundation, and excellence-driven board prep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Board -->
+    <section class="notices" id="notices">
+        <div class="notice-box">
+            <h2><i class="fas fa-bullhorn"></i> Latest School Notices</h2>
+            <div class="notice-item">
+                <p>Annual Sports Meet 2026 registration has officially started.</p>
+                <span>Oct 15, 2026</span>
+            </div>
+            <div class="notice-item">
+                <p>Half-Yearly Examination date sheet published for all sections.</p>
+                <span>Nov 02, 2026</span>
+            </div>
+            <div class="notice-item">
+                <p>Parent-Teacher Meeting (PTM) scheduled for upcoming Saturday.</p>
+                <span>Nov 10, 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Admission Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-details">
+            <h2>Get in Touch With Us</h2>
+            <p>Have questions regarding admissions, fee structures, or campus tours? Reach out to our administrative office.</p>
+            
+            <div class="contact-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Campus Location</h4>
+                    <p>Sunshine Academy, Near Janaki Niwas, 39N, Pulin Khatick Rd, Tangra, Kolkata, West Bengal 700046</p>
+                </div>
+            </div>
+            <div class="contact-info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>Phone Number</h4>
+                    <p>+91 08274 942697</p>
+                </div>
+            </div>
+            <div class="contact-info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h4>Email Address</h4>
+                    <p>admissions@sunshineacademy.edu</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2 style="font-size: 24px; color: var(--primary); margin-bottom: 20px;">Admission Enquiry</h2>
+            <form onsubmit="event.preventDefault(); alert('Thank you! Your enquiry has been successfully submitted. Our team will call you back shortly.');">
+                <div class="form-group">
+                    <input type="text" placeholder="Student Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Parent / Guardian Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Mobile Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Class Seeking Admission For" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="3" placeholder="Any Specific Query"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sunshine Academy School. All Rights Reserved. Designed with Smart CSS.</p>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
